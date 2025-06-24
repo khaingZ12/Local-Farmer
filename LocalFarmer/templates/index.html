@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Farmer Market - Farm-to-Table Ordering</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-seedling me-2"></i>
+                FarmMarket
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home"><i class="fas fa-home me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-apple-alt me-1"></i>Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-users me-1"></i>Farmers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-info-circle me-1"></i>About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-phone me-1"></i>Contact</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <div class="position-relative me-3">
+                        <i class="fas fa-bell fs-5 text-muted"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="position-relative me-3">
+                        <i class="fas fa-shopping-cart fs-5 text-muted"></i>
+                        <span class="notification-badge">2</span>
+                    </div>
+                    <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#authModal">
+                        <i class="fas fa-sign-in-alt me-1"></i>Login
+                    </button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#authModal">
+                        <i class="fas fa-user-plus me-1"></i>Register
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+     <section id="home" class="hero-section myanmar-pattern">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-slide-in">
+                    <h1 class="display-4 fw-bold mb-4">
+                        Fresh Farm to Your Table
+                    </h1>
+                    <p class="lead mb-4">
+                        Connect directly with local farmers in Myanmar. Get the freshest produce delivered to your doorstep while supporting local agriculture.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mb-5">
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fas fa-shopping-bag me-2"></i>Start Shopping
+                        </button>
+                        <button class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-tractor me-2"></i>Join as Farmer
+                        </button>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="search-bar">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for fresh produce, farmers, or categories...">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center animate-fade-in">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&h=400&fit=crop" 
+                             alt="Fresh Farm Produce" class="img-fluid rounded-3 shadow-lg">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-10 rounded-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+     <!-- Features Section -->
+      <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold text-primary">Why Choose Our Platform?</h2>
+                    <p class="lead text-muted">Supporting Myanmar's agricultural community</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 text-center animate-fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <h4>Direct from Farmers</h4>
+                    <p class="text-muted">Connect directly with local farmers, ensuring freshness and fair prices.</p>
+                </div>
+                <div class="col-md-3 text-center animate-fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Organic & Fresh</h4>
+                    <p class="text-muted">Certified organic produce harvested at peak freshness.</p>
+                </div>
+                <div class="col-md-3 text-center animate-fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h4>Fast Delivery</h4>
+                    <p class="text-muted">Same-day delivery available in major Myanmar cities.</p>
+                </div>
+                <div class="col-md-3 text-center animate-fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Quality Guaranteed</h4>
+                    <p class="text-muted">100% satisfaction guarantee or your money back.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold text-primary">Featured Products</h2>
+                    <p class="lead text-muted">Fresh picks from our local farmers</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card h-100">
+                        <div class="product-badge">Fresh</div>
+                        <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=300&h=200&fit=crop" 
+                             class="card-img-top" alt="Organic Tomatoes">
+                        <div class="product-overlay">
+                            <div class="text-center">
+                                <button class="btn btn-light me-2"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Organic Tomatoes</h5>
+                            <p class="text-muted mb-2">By Farmer Ko Aung</p>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-1">(24 reviews)</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-primary mb-0">2,500 MMK/kg</span>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-cart-plus me-1"></i>Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card h-100">
+                        <div class="product-badge">Organic</div>
+                        <img src="https://images.unsplash.com/photo-1445282768818-728615cc910a?w=300&h=200&fit=crop" 
+                             class="card-img-top" alt="Fresh Lettuce">
+                        <div class="product-overlay">
+                            <div class="text-center">
+                                <button class="btn btn-light me-2"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Fresh Lettuce</h5>
+                            <p class="text-muted mb-2">By Ma Thida Farm</p>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="ms-1">(18 reviews)</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-primary mb-0">1,800 MMK/head</span>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-cart-plus me-1"></i>Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card h-100">
+                        <div class="product-badge">Popular</div>
+                        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?w=300&h=200&fit=crop" 
+                             class="card-img-top" alt="Fresh Carrots">
+                        <div class="product-overlay">
+                            <div class="text-center">
+                                <button class="btn btn-light me-2"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Fresh Carrots</h5>
+                            <p class="text-muted mb-2">By Shan Highland Farm</p>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-1">(31 reviews)</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-primary mb-0">2,200 MMK/kg</span>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-cart-plus me-1"></i>Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card h-100">
+                        <div class="product-badge">New</div>
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&h=200&fit=crop" 
+                             class="card-img-top" alt="Fresh Spinach">
+                        <div class="product-overlay">
+                            <div class="text-center">
+                                <button class="btn btn-light me-2"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Fresh Spinach</h5>
+                            <p class="text-muted mb-2">By Green Valley Co-op</p>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="ms-1">(12 reviews)</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-primary mb-0">1,500 MMK/bunch</span>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-cart-plus me-1"></i>Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Tracking Demo -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold text-primary">Track Your Orders</h2>
+                    <p class="lead text-muted">Real-time order tracking for peace of mind</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h5 class="card-title">Order #MM-2025-001</h5>
+                            <p class="text-muted">Ordered on June 22, 2025</p>
+                            
+                            <div class="order-status">
+                                <div class="status-step active">
+                                    <div class="status-circle">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="fw-bold">Confirmed</div>
+                                    <small class="text-muted">10:30 AM</small>
+                                </div>
+                                <div class="status-step active">
+                                    <div class="status-circle">
+                                        <i class="fas fa-box"></i>
+                                    </div>
+                                    <div class="fw-bold">Packed</div>
+                                    <small class="text-muted">11:45 AM</small>
+                                </div>
+                                <div class="status-step active">
+                                    <div class="status-circle">
+                                        <i class="fas fa-truck"></i>
+                                    </div>
+                                    <div class="fw-bold">Out for Delivery</div>
+                                    <small class="text-muted">2:15 PM</small>
+                                </div>
+                                <div class="status-step">
+                                    <div class="status-circle">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div>Delivered</div>
+                                    <small class="text-muted">Est. 4:30 PM</small>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Your order is on the way! Expected delivery time: 4:30 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Farmers -->
+     <section id="farmers" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold text-primary">Meet Our Farmers</h2>
+                    <p class="lead text-muted">Supporting local agriculture across Myanmar</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1595390747307-ac06b05e6bd3?w=300&h=200&fit=crop" 
+                             class="card-img-top" alt="Ko Aung Farm">
+                        <div class="card-body text-center">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" 
+                                 class="rounded-circle mb-3" width="80" height="80" alt="Ko Aung">
+                            <h5 class="card-title">Ko Aung</h5>
+                            <p class="text-muted">Organic Vegetable Specialist</p>
+                            <p class="card-text">Located in Mandalay Region, specializing in organic tomatoes, peppers, and leafy greens.</p>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-1">4.9 (156 reviews)</span>
+                            </div>
+                            <button class="btn btn-outline-primary">View Products</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=300&h=200&fit=crop" 
+                             class="card-img-top" alt="Ma Thida Farm">
+                        <div class="card-body text-center">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616c4ea6de2?w=80&h=80&fit=crop&crop=face" 
+                                 class="rounded-circle mb-3" width="80" height="80" alt="Ma Thida">
+                            <h5 class="card-title">Ma Thida</h5>
+                            <p class="text-muted">Certified Organic Producer</p>
+                            <p class="card-text">Third-generation farmer from Shan State, known for premium quality fruits and vegetables.</p>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-1">4.8 (203 reviews)</span>
+                            </div>
+                            <button class="btn btn-outline-primary">View Products</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&h=200&fit=crop" 
+                             class="card-img-top" alt="Shan Highland Farm">
+                        <div class="card-body text-center">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" 
+                                 class="rounded-circle mb-3" width="80" height="80" alt="U Myint">
+                            <h5 class="card-title">U Myint</h5>
+                            <p class="text-muted">Highland Agriculture Expert</p>
+                            <p class="card-text">Sustainable farming practices in Shan highlands, specializing in root vegetables and herbs.</p>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="ms-1">4.7 (89 reviews)</span>
+                            </div>
+                            <button class="btn btn-outline-primary">View Products</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+     <!-- Statistics Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="display-4 fw-bold text-primary">500+</div>
+                    <p class="lead">Registered Farmers</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="display-4 fw-bold text-primary">25,000+</div>
+                    <p class="lead">Happy Customers</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="display-4 fw-bold text-primary">1,200+</div>
+                    <p class="lead">Products Available</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="display-4 fw-bold text-primary">15</div>
+                    <p class="lead">Cities Served</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+     <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="footer-title">
+                        <i class="fas fa-seedling me-2"></i>
+                        <span class="myanmar-text">လယ်သမားစျေး</span> FarmMarket
+                    </h4>
+                    <p class="mb-4">Connecting Myanmar's farmers directly with consumers for fresher produce and fair prices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Products</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Farmers</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">About Us</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Vegetables</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Fruits</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Grains</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Organic</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Herbs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Delivery Info</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Return Policy</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Terms of Service</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            +95 9 123 456 789
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@farmmarket.mm
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Yangon, Myanmar
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 FarmMarket Myanmar. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+     </footer>
+
+    <!-- Authentication Modal -->
+     <div class="modal fade" id="authModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content auth-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Welcome to FarmMarket</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="auth-tabs">
+                        <ul class="nav nav-tabs nav-fill" role="tablist">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#loginTab">
+                                    <i class="fas fa-sign-in-alt me-1"></i>Login
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#registerTab">
+                                    <i class="fas fa-user-plus me-1"></i>Register
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content p-4">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="loginTab">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" placeholder="Enter your password">
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    </div>
+                                    <a href="#" class="text-decoration-none">Forgot password?</a>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+                                
+                                <div class="text-center mb-3">
+                                    <span class="text-muted">or login with</span>
+                                </div>
+                                
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-outline-danger w-100">
+                                            <i class="fab fa-google me-1"></i>Google
+                                        </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-outline-primary w-100">
+                                            <i class="fab fa-facebook-f me-1"></i>Facebook
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Register Tab -->
+                        <div class="tab-pane fade" id="registerTab">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">User Type</label>
+                                    <select class="form-control">
+                                        <option>Customer</option>
+                                        <option>Farmer</option>
+                                        <option>Delivery Partner</option>
+                                    </select>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-6">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control" placeholder="First name">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Last name">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" placeholder="+95 9 123 456 789">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" placeholder="Create a password">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" placeholder="Confirm your password">
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms">
+                                    <label class="form-check-label" for="agreeTerms">
+                                        I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and 
+                                        <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                            </form>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div> 
+
+     <!-- Shopping Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="cart-items">
+                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                    <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=60&h=60&fit=crop" 
+                         class="rounded me-3" width="60" height="60" alt="Tomatoes">
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0">Organic Tomatoes</h6>
+                        <small class="text-muted">2kg × 2,500 MMK</small>
+                    </div>
+                    <div class="text-end">
+                        <div class="input-group input-group-sm mb-1" style="width: 80px;">
+                            <button class="btn btn-outline-secondary" type="button">-</button>
+                            <input type="text" class="form-control text-center" value="2">
+                            <button class="btn btn-outline-secondary" type="button">+</button>
+                        </div>
+                        <strong>5,000 MMK</strong>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                    <img src="https://images.unsplash.com/photo-1445282768818-728615cc910a?w=60&h=60&fit=crop" 
+                         class="rounded me-3" width="60" height="60" alt="Lettuce">
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0">Fresh Lettuce</h6>
+                        <small class="text-muted">1 head × 1,800 MMK</small>
+                    </div>
+                    <div class="text-end">
+                        <div class="input-group input-group-sm mb-1" style="width: 80px;">
+                            <button class="btn btn-outline-secondary" type="button">-</button>
+                            <input type="text" class="form-control text-center" value="1">
+                            <button class="btn btn-outline-secondary" type="button">+</button>
+                        </div>
+                        <strong>1,800 MMK</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-summary mt-4">
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal:</span>
+                    <strong>6,800 MMK</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Delivery:</span>
+                    <strong>1,000 MMK</strong>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="h6">Total:</span>
+                    <strong class="h6 text-primary">7,800 MMK</strong>
+                </div>
+                
+                <button class="btn btn-primary w-100 mb-2">Proceed to Checkout</button>
+                <button class="btn btn-outline-secondary w-100">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Admin Dashboard Preview Modal -->
+    <div class="modal fade" id="adminModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Dashboard Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-users display-4 text-primary mb-3"></i>
+                                    <h4>25,847</h4>
+                                    <p class="text-muted">Total Users</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-shopping-cart display-4 text-success mb-3"></i>
+                                    <h4>1,234</h4>
+                                    <p class="text-muted">Orders Today</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-tractor display-4 text-warning mb-3"></i>
+                                    <h4>567</h4>
+                                    <p class="text-muted">Active Farmers</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-chart-line display-4 text-info mb-3"></i>
+                                    <h4>₹89,456</h4>
+                                    <p class="text-muted">Revenue Today</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="mb-0">Recent Orders Management</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Order ID</th>
+                                                    <th>Customer</th>
+                                                    <th>Farmer</th>
+                                                    <th>Status</th>
+                                                    <th>Amount</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>#MM-001</td>
+                                                    <td>Mg Mg</td>
+                                                    <td>Ko Aung</td>
+                                                    <td><span class="badge bg-warning">Pending</span></td>
+                                                    <td>5,000 MMK</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary">View</button>
+                                                        <button class="btn btn-sm btn-outline-success">Approve</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#MM-002</td>
+                                                    <td>Ma Su</td>
+                                                    <td>Ma Thida</td>
+                                                    <td><span class="badge bg-success">Delivered</span></td>
+                                                    <td>8,500 MMK</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary">View</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'script.js' %}"></script>     
+</body>
+</html>
